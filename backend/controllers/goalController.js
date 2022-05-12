@@ -1,10 +1,13 @@
 const asyncHandler = require('express-async-handler');
 
+const GoalModel = require('../models/goalModel');
+
 // @desc    Get goals
 // @route   GET /api/goals
 // @access  Private
 const getGoals = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: 'GET goals' });
+    const goals = await GoalModel.find();
+    res.status(200).json(goals);
 });
 
 // @desc    Create goal
@@ -16,7 +19,11 @@ const createGoal = asyncHandler(async (req, res) => {
         throw new Error('Please enter a goal')
     }
 
-    res.json({ message: 'CREATE goal' });
+    const goal = await GoalModel.create({
+        text: req.body.text
+    });
+
+    res.json(goal);
 });
 
 // @desc    Update goal
