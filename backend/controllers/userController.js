@@ -81,7 +81,13 @@ const generateToken = (id) => {
 // @route   GET /api/users/profile
 // @access  Public
 const getUser = asyncHandler(async (req, res) => {
-    res.json({ message: 'User Profile' });
+    const { _id, name, email } = await User.findById(req.user.id);
+
+    res.status(200).json({
+        id: _id,
+        name,
+        email
+    });
 });
 
 module.exports = {
