@@ -9,6 +9,11 @@ const getGoals = (req, res) => {
 // @route   POST /api/goals
 // @access  Private
 const createGoal = (req, res) => {
+    if(!req.body.text) {
+        res.status(400)
+        throw new Error('Please enter a goal')
+    }
+
     res.json({ message: 'CREATE goal' });
 };
 
