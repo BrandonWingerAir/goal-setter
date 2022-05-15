@@ -70,25 +70,19 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc    Get user data
+// @route   GET /api/users/profile
+// @access  Public
+const getUser = asyncHandler(async (req, res) => {
+    res.status(200).json(req.user);
+});
+
 // Generate JWT
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     });
 }
-
-// @desc    Get user data
-// @route   GET /api/users/profile
-// @access  Public
-const getUser = asyncHandler(async (req, res) => {
-    const { _id, name, email } = await User.findById(req.user.id);
-
-    res.status(200).json({
-        id: _id,
-        name,
-        email
-    });
-});
 
 module.exports = {
     registerUser,
