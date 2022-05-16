@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createGoal } from '../features/goals/goalSlice';
 
 function GoalForm() {
-    const [goalText, setText] = useState('');
+    const [text, setText] = useState('');
 
     const dispatch = useDispatch();
 
@@ -20,9 +20,9 @@ function GoalForm() {
                 <label htmlFor="text">Goal</label>
                 <input 
                     type="text" 
-                    name="goalText" 
-                    id="goalText" 
-                    value={goalText} 
+                    name="text" 
+                    id="text" 
+                    value={text} 
                     onChange={(e) => setText(e.target.value)}
                 />
             </div>
