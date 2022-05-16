@@ -48,7 +48,7 @@ function Dashboard() {
             <GoalItem key={goal._id} goal={goal}/>
           ))}
         </div>
-      ) : (<h3>No goals set</h3>)}
+      ) : (<h3>"If you don’t know where you are going, you will probably end up somewhere else." – Lawrence J. Peter</h3>)}
     </section>
   </>
 }
